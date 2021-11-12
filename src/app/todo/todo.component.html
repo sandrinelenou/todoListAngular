@@ -1,0 +1,24 @@
+<h3 [ngStyle]= "{color:'blue'}">Liste des taches a realiser</h3>
+<p>Nous sommes le {{ today | date: 'dd/MM/yyyy'}}</p>
+ <!--{{ todos| json}}-->
+
+<hr>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor= " let todo of todos , let i = index">
+    <div [ngClass] = "{ encours: todo.todoStatus, terminee: !todo.todoStatus }">
+      <a [href] = "todo.image" ><img [src] = "todo.image" /></a>
+      {{todo.todoName }}
+
+     <button class="btn btn-primary mr-3"  [disabled] = "todo.todoStatus" (click) = "OnChangeStatus(i)">En cours</button>
+      <button class="btn btn-success mr-1"  [disabled] = "!todo.todoStatus" (click) = "OnChangeStatus(i)">terminée</button>
+
+      <!-- action de modification-->
+      <button class="btn btn-danger mr-1" (click) = "OnChangeIsModif(i)" *ngIf = "!todo.isModif">Modifier</button>
+      <button class="btn btn-success mr-1"  (click) = "OnChangeIsModif(i)" *ngIf = "todo.isModif">Modification terminée</button>
+      <button class="btn btn-success mr-1"  (click) = "onView(i)" >En savoir plus</button>
+
+
+      <input *ngIf= "todo.isModif" class="form-control" [(ngModel)]="todo.todoName">
+    </div>
+ </li>
+</ul>

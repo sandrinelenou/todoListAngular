@@ -1,0 +1,13 @@
+<!--<p *ngIf = "todo">{{ todo | json}}</p>
+<p *ngIf = "!todo">{{ error }}</p>-->
+
+<h1 class="text-center pb-4">Détails de la tache</h1>
+<div class="card" style="width: 18rem;">
+  <img [src]="todo.image" class="card-img-top" [alt]="todo.name">
+  <div class="card-body">
+    <h5 class="card-title">{{ todo.todoName}}</h5>
+    <h5 class="card-title">{{ todo.description}}</h5>
+
+  </div>
+</div>
+<a type="button" class="btn btn-primary my-4" routerLink="/todos">Retour</a>
